@@ -1,14 +1,13 @@
 # Timelapse Script Documentation
 
 ## Overview
+The timelapse script allows you to automatically compile all images in a given directory into a timelapse video file. The script automatically detects images with timestamps and assembles them into a video in chronological order. Users can either provide variables interactively or directly at script startup via command line arguments.
 
 To get started, clone the repository from GitHub:
 
 ```bash
 git clone https://github.com/R3ITOSv87/timelapse_assembler.git
 ```
-
-The timelapse script allows you to automatically compile all images in a given directory into a timelapse video file. The script automatically detects images with timestamps and assembles them into a video in chronological order. Users can either provide variables interactively or directly at script startup via command line arguments.
 
 ## Requirements
 
