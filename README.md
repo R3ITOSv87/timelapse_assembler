@@ -2,6 +2,12 @@
 
 ## Overview
 
+To get started, clone the repository from GitHub:
+
+```bash
+git clone https://github.com/R3ITOSv87/timelapse_assembler.git
+```
+
 The timelapse script allows you to automatically compile all images in a given directory into a timelapse video file. The script automatically detects images with timestamps and assembles them into a video in chronological order. Users can either provide variables interactively or directly at script startup via command line arguments.
 
 ## Requirements
@@ -20,6 +26,7 @@ The script can be used interactively by running it without parameters or by pass
 ### Preparation
 
 Before you can run the script, you need to make it executable. Use the following command:
+
 ```bash
 chmod +x timelapse_assembler.sh
 ```
@@ -29,10 +36,13 @@ chmod +x timelapse_assembler.sh
 #### 1. Interactive Input
 
 Run the script without additional arguments:
+
 ```bash
 ./timelapse_assembler.sh
 ```
+
 The script will then prompt for the necessary information:
+
 - **Directory of Images**: The path to the directory containing the images (default: `./images`).
 - **Output File Name**: The name of the timelapse file to be created (default: `timelapse.mp4`).
 - **Frames per Second (FPS)**: The number of frames per second for the video (default: `30`).
@@ -40,9 +50,11 @@ The script will then prompt for the necessary information:
 #### 2. Running with Command Line Arguments
 
 You can also provide the necessary information directly at startup:
+
 ```bash
 ./timelapse_assembler.sh -d /path/to/images -o output.mp4 -f 25
 ```
+
 - `-d` or `--directory`: Path to the directory with the images.
 - `-o` or `--output`: Name of the output file.
 - `-f` or `--fps`: Number of frames per second for the video.
@@ -50,15 +62,19 @@ You can also provide the necessary information directly at startup:
 ### Example
 
 1. **Interactive**:
+
    ```bash
    ./timelapse_assembler.sh
    ```
+
    The script will ask you for the directory, the output file name, and the FPS.
 
 2. **With Arguments**:
+
    ```bash
    ./timelapse_assembler.sh -d ./images -o timelapse.mp4 -f 24
    ```
+
    This creates a timelapse from the images in the directory `./images` with 24 FPS and saves it as `timelapse.mp4`.
 
 ## Script Functionality
@@ -78,6 +94,7 @@ You can also provide the necessary information directly at startup:
 - **Permission Issues**: Ensure that you have the necessary write permissions for the directory where the output file will be saved.
 
 ## Extensions
+
 - **File Formats**: The script is designed to process only `.jpg` files. It could be extended to support other image formats (`.png`, `.jpeg`, etc.).
 - **Parallel Processing**: For very large numbers of images, parallelization or preprocessing could help speed up the timelapse creation.
 - **Additional Filters**: The `ffmpeg` command can be adjusted to add additional video effects or filters, such as adding music or watermarks.
