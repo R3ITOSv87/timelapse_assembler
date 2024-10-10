@@ -91,6 +91,3 @@ You can also provide the necessary information directly at startup:
 - **Parallel Processing**: For a large number of images, consider optimizing the filtering process by parallelizing it.
 - **Additional Filters**: You can add more `ffmpeg` filters to adjust the video output, such as adding text overlays or watermarks.
 
-## Conclusion
-The script provides a simple way to create a timelapse from a collection of images. It is flexible in usage, supporting both interactive input and command line control. With appropriate adjustments, the script can be tailored to meet various video editing needs.
-
