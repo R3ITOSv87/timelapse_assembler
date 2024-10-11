@@ -41,18 +41,20 @@ The script will then prompt for the necessary information:
 - **Directory of Images**: The path to the directory containing the images (default: `./images`).
 - **Output File Name**: The name of the timelapse file to be created (default: `timelapse.mp4`).
 - **Frames per Second (FPS)**: The number of frames per second for the video (default: `30`).
-- **Remove Dark Images**: The option to remove dark images from the timelapse (default: `no`).
+- **Remove Dark Images**: The option to remove dark images from the timelapse (default: `yes`).
+- **Stabilize the Timelapse**: The option to stabilize the timelapse video (default: `yes`).
 
 #### 2. Running with Command Line Arguments
 
 You can also provide the necessary information directly at startup:
 ```bash
-./timelapse_assembler.sh -d /path/to/images -o output.mp4 -f 25 --remove-dark
+./timelapse_assembler.sh -d /path/to/images -o output.mp4 -f 25 --remove-dark --stabilize
 ```
 - `-d` or `--directory`: Path to the directory with the images.
 - `-o` or `--output`: Name of the output file.
 - `-f` or `--fps`: Number of frames per second for the video.
 - `--remove-dark`: Optional flag to filter out dark images.
+- `--stabilize`: Optional flag to stabilize the timelapse video.
 
 ### Example
 
@@ -60,13 +62,13 @@ You can also provide the necessary information directly at startup:
    ```bash
    ./timelapse_assembler.sh
    ```
-   The script will ask you for the directory, the output file name, the FPS, and whether to remove dark images.
+   The script will ask you for the directory, the output file name, the FPS, whether to remove dark images, and whether to stabilize the timelapse.
 
 2. **With Arguments**:
    ```bash
-   ./timelapse_assembler.sh -d ./images -o timelapse.mp4 -f 24 --remove-dark
+   ./timelapse_assembler.sh -d ./images -o timelapse.mp4 -f 24 --remove-dark --stabilize
    ```
-   This creates a timelapse from the images in the directory `./images` with 24 FPS, removes dark images, and saves it as `timelapse.mp4`.
+   This creates a timelapse from the images in the directory `./images` with 24 FPS, removes dark images, stabilizes the video, and saves it as `timelapse.mp4`.
 
 ## Script Functionality
 
@@ -74,6 +76,7 @@ You can also provide the necessary information directly at startup:
 - It checks if the specified directory exists. If not, an error message is displayed, and the script terminates.
 - If the `--remove-dark` option is used or selected, the script filters out dark images by calculating their brightness using `ImageMagick`. Only images above a certain brightness threshold are included.
 - Using `ffmpeg`, the remaining `.jpg` images in the given directory are assembled into a timelapse video. The `-pattern_type glob` parameter allows the use of wildcards to find all `.jpg` files.
+- If the `--stabilize` option is used or selected, the script will stabilize the generated timelapse using `ffmpeg`'s vidstab plugin. The stabilized video is saved with the same output file name, overwriting the original.
 - The video is saved as an MP4 file, with the specified frame rate (`FPS`) and output file name (`OUTPUT_FILE`).
 
 ## Troubleshooting
@@ -90,4 +93,3 @@ You can also provide the necessary information directly at startup:
 - **File Formats**: The script is designed to process only `.jpg` files. It could be extended to support other image formats (`.png`, `.jpeg`, etc.).
 - **Parallel Processing**: For a large number of images, consider optimizing the filtering process by parallelizing it.
 - **Additional Filters**: You can add more `ffmpeg` filters to adjust the video output, such as adding text overlays or watermarks.
-
